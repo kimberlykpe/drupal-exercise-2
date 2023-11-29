@@ -1,4 +1,30 @@
-.welcome-message {
+@charset "utf-8";
+
+.node--type-article .page-title {
+    color: rgb(0,62,20);
+}
+
+/* .views-row .node--view-mode-card {
+    border: 1px solid #893c24;
+} */
+
+.field--type-text-with-summary .field__label {
+	background-color: #893c24;
+	width: 120px;
+	height: 40px;
+	border-radius: 20px;
+	color: white;
+	text-align: center;
+	padding-top: 5px;
+	margin-bottom: 2px;
+}
+
+.block-field-blocknoderecipefield-food-warning {
     font-weight: bold;
-    color: beige;
+    color: #893c24;
+}
+
+.welcome-message {
+    color: black;
+    font-weight: bold;
 }

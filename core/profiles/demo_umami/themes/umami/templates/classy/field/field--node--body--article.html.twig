@@ -1,0 +1,65 @@
+{#
+/**
+ * @file
+ * Theme override for a field.
+ *
+ * ... (rest of the comments)
+ */
+#}
+
+{%
+  set classes = [
+    'field',
+    'field--name-' ~ field_name|clean_class,
+    'field--type-' ~ field_type|clean_class,
+    'field--label-' ~ label_display,
+    label_display == 'inline' ? 'clearfix',
+  ]
+%}
+{%
+  set title_classes = [
+    'field__label',
+    label_display == 'visually_hidden' ? 'visually-hidden',
+  ]
+%}
+
+{%
+  set hasWarning = false
+%}
+
+{# Check if there's a field named 'field_warning' and it's not empty #}
+{% if content['#object'].hasField('field_warning') and content['#object'].field_warning.0['#markup'] %}
+  {%
+    set hasWarning = true
+  %}
+{% endif %}
+
+{% if label_hidden %}
+  {% if multiple %}
+    <div{{ attributes.addClass(classes, 'field__items') }}>
+      {% for item in items %}
+        <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
+      {% endfor %}
+    </div>
+  {% else %}
+    {% for item in items %}
+      <div{{ attributes.addClass(classes, 'field__item') }}>{{ item.content }}</div>
+    {% endfor %}
+  {% endif %}
+{% else %}
+  <div{{ attributes.addClass(classes) }}>
+    {% if hasWarning %}
+      <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
+      <div class="field__items">
+        {% for item in items %}
+          <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="welcome-message">
+        <p><strong>Welcome to all food lovers!</strong></p>
+        <p>Explore our delicious recipes without any worries.</p>
+      </div>
+    {% endif %}
+  </div>
+{% endif %}
