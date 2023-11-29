@@ -1,0 +1,15 @@
+/**
+ * @file
+ * Page title.
+ */
+
+@import "../base/media-queries.pcss.css";
+
+.page-title {
+  /*
+    Necessary to properly display the star icon from core's shortcut
+    module.
+  */
+  display: inline;
+  color: rgb(0, 62, 204);
+}
