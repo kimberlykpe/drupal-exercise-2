@@ -1,10 +1,11 @@
 @charset "utf-8";
 
 .node--type-article .page-title {
-    color: rgb(0,62,20);
+    color: rgb(0,62,204);
 }
 
-/* .views-row .node--view-mode-card {
+/* 
+	.views-row .node--view-mode-card {
     border: 1px solid #893c24;
 } */
 
@@ -27,4 +28,18 @@
 .welcome-message {
     color: black;
     font-weight: bold;
+}
+
+.empty-fields__text .field__item {
+    background-color: #78bd8f;
+	width: 400px;
+	height: 60px;
+	border-radius: 20px;
+	color: white;
+	text-align: center;
+	padding-top: 15px;
+	padding-bottom: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-size: x-large
 }

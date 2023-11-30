@@ -16,31 +16,49 @@
 
 {% if label_hidden %}
   {% if multiple %}
-    <div{{ attributes.addClass(classes, 'field__items') }}>
-      {% for item in items %}
-        {% set field_content = item.content|render %}
-        <div{{ item.attributes.addClass('field__item') }}>{{ field_content|trim ? field_content : 'welcome' }}</div>
-      {% endfor %}
-    </div>
+    {# Check if there are items or not #}
+    {% if items %}
+      <div{{ attributes.addClass(classes, 'field__items') }}>
+        {% for item in items %}
+          <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="field__item">Welcome</div>
+    {% endif %}
   {% else %}
-    {% for item in items %}
-      {% set field_content = item.content|render %}
-      <div{{ item.attributes.addClass(classes, 'field__item') }}>{{ field_content|trim ? field_content : 'welcome' }}</div>
-    {% endfor %}
+    {# Check if there is a single item or not #}
+    {% if items %}
+      {% for item in items %}
+        <div{{ attributes.addClass(classes, 'field__item') }}>{{ item.content }}</div>
+      {% endfor %}
+    {% else %}
+      <div class="field__item">Welcome</div>
+    {% endif %}
   {% endif %}
 {% else %}
   <div{{ attributes.addClass(classes) }}>
     <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
     {% if multiple %}
-      <div class="field__items">
-    {% endif %}
-    {% for item in items %}
-      {% set field_content = item.content|render %}
-      <div{{ item.attributes.addClass('field__item') }}>{{ field_content|trim ? field_content : 'welcome' }}</div>
-    {% endfor %}
-    {% if multiple %}
-      </div>
+      {# Check if there are items or not #}
+      {% if items %}
+        <div class="field__items">
+          {% for item in items %}
+            <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="field__item">Welcome</div>
+      {% endif %}
+    {% else %}
+      {# Check if there is a single item or not #}
+      {% if items %}
+        {% for item in items %}
+          <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
+        {% endfor %}
+      {% else %}
+        <div class="field__item">Welcome</div>
+      {% endif %}
     {% endif %}
   </div>
 {% endif %}
-

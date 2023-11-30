@@ -5,6 +5,7 @@
 
 .grid--4 .views-row {
   margin-bottom: 28px;
+  border: 1px solid #893c24;
 }
 /* Small */
 @media screen and (min-width: 30em) { /* 480px */
